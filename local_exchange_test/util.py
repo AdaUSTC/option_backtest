@@ -4,7 +4,7 @@ import re
 import os
 from datetime import datetime, timedelta
 pd.set_option('expand_frame_repr', False)
-option_eg = create_engine('')
+option_eg = create_engine('')  #sqlalchemy
 stk_eg = create_engine('')
 
 PROJECT_ROOT = os.path.abspath(os.path.join(__file__, os.pardir))
