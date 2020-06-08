@@ -1,9 +1,9 @@
 import pandas as pd
-from sqlalchemy import create_engine
+from sqlalchemy import create_engine  #数据库 creat_engine
 import re
 import os
 from datetime import datetime, timedelta
-pd.set_option('expand_frame_repr', False)
+pd.set_option('expand_frame_repr', False)  #pd.set_option(） 第一个参数代表设置的是“是否允许换行”，第二个参数 False代表不允许换行
 option_eg = create_engine('')  #sqlalchemy
 stk_eg = create_engine('')
 
