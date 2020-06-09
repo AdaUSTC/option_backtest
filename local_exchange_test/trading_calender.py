@@ -6,11 +6,11 @@ class TradingCalender:
         self._eg = engine
         self._date = self.date_stream_init(init_index)
 
-    @property
+    @property  #将方法变成属性~
     def date(self):
         return self._date
 
-    def date_stream_init(self, index):
+    def date_stream_init(self, index):  #生成date、close的df
         sql = 'select * from "%s"' % index
         df = pd.read_sql_query(sql, con=self._eg)
         df['date'] = pd.to_datetime(df['date'])
@@ -21,9 +21,9 @@ class TradingCalender:
     # 检查传入的时间是否可交易
     def tradable_date(self, date):
         date = pd.to_datetime(date)
-        if date in list(self._date['date'].values):
-            return True
-        else:
+        if date in list(self._date['date'].values): #list(df['columns'].values) 将df中某一列转换成list形式
+            return True      #a in [] #逻辑判断
+        else: 
             return False
 
     # 根据交易日找下一个交易日
@@ -34,7 +34,7 @@ class TradingCalender:
     # 根据交易日找前一个交易日
     def get_last_trading_date(self, date):
         last_date = pd.to_datetime(self._date.loc[self._date['date'].shift(-1) == date, 'date'].values[0])
-        return last_date
+        return last_date  
 
     # 是否是本月第一个交易日
     def if_first_trading_date(self, date):
